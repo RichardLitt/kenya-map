@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/RichardLitt/kenya-map/issues"
   },
-  "homepage": "https://github.com/RichardLitt/kenya-map#readme"
+  "homepage": "https://github.com/RichardLitt/kenya-map#readme",
+  "dependencies": {
+    "leaflet": "^1.0.3"
+  }
 }
