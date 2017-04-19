@@ -8,6 +8,8 @@
 
 TODO: Fill out this long description.
 
+Time spent: 2 hours, 5 minutes.
+
 ## Table of Contents
 
 - [Background](#background)
