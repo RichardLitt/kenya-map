@@ -32,5 +32,10 @@
     "envify": "^4.0.0",
     "standard": "^10.0.2",
     "watchify": "^3.9.0"
+  },
+  "standard": {
+    "ignore": [
+      "dist/*"
+    ]
   }
 }
