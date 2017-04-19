@@ -1,0 +1,25 @@
+{
+  "name": "kenya-map",
+  "version": "1.0.0",
+  "description": "This is a map of Kenya, as a test example.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardLitt/kenya-map.git"
+  },
+  "keywords": [
+    "kenya",
+    "map",
+    "example",
+    "ushahidi"
+  ],
+  "author": "Richard Littauer <richard.littauer@gmail.com> (http://burntfen.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RichardLitt/kenya-map/issues"
+  },
+  "homepage": "https://github.com/RichardLitt/kenya-map#readme"
+}
