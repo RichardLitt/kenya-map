@@ -1,4 +1,36 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*!
+  * domready (c) Dustin Diaz 2014 - License MIT
+  */
+!function (name, definition) {
+
+  if (typeof module != 'undefined') module.exports = definition()
+  else if (typeof define == 'function' && typeof define.amd == 'object') define(definition)
+  else this[name] = definition()
+
+}('domready', function () {
+
+  var fns = [], listener
+    , doc = document
+    , hack = doc.documentElement.doScroll
+    , domContentLoaded = 'DOMContentLoaded'
+    , loaded = (hack ? /^loaded|^c/ : /^loaded|^i|^c/).test(doc.readyState)
+
+
+  if (!loaded)
+  doc.addEventListener(domContentLoaded, listener = function () {
+    doc.removeEventListener(domContentLoaded, listener)
+    loaded = 1
+    while (listener = fns.shift()) listener()
+  })
+
+  return function (fn) {
+    loaded ? setTimeout(fn, 0) : fns.push(fn)
+  }
+
+});
+
+},{}],2:[function(require,module,exports){
 /*
  Leaflet 1.0.3, a JS library for interactive maps. http://leafletjs.com
  (c) 2010-2016 Vladimir Agafonkin, (c) 2010-2011 CloudMade
@@ -13250,11 +13282,23 @@ L.control.layers = function (baseLayers, overlays, options) {
 
 }(window, document));
 
-},{}],2:[function(require,module,exports){
-const leaflet = require('leaflet')
+},{}],3:[function(require,module,exports){
+const L = require('leaflet')
+const domready = require('domready')
 
-// Good, this is totally being called.
-console.log('hi')
-console.log(leaflet)
+const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoicmljaGFyZGxpdHQiLCJhIjoiY2oxcGs2M2kyMDAwNzMzbzExZ3k1bXM4ZyJ9.lxlSF9kNkXbUYATNkzkaKg"
 
-},{"leaflet":1}]},{},[2]);
+domready(function () {
+  const mymap = L.map('mapid').setView([0.0236, 37.9062], 13)
+  L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=' + MAPBOX_ACCESS_TOKEN, {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 7,
+    id: 'mapbox.mapbox-streets-v7',
+    accessToken: MAPBOX_ACCESS_TOKEN
+  }).addTo(mymap)
+
+  // Test marker
+  var marker = L.marker([0.0236, 37.9062]).addTo(mymap)
+})
+
+},{"domready":1,"leaflet":2}]},{},[3]);

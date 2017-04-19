@@ -6,7 +6,7 @@
   "scripts": {
     "test": "standard && node ./test.js",
     "lint": "standard",
-    "build": "browserify src/index.js -o dist/bundle.js"
+    "build": "node build"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,9 @@
     "leaflet": "^1.0.3"
   },
   "devDependencies": {
+    "browserify": "^14.3.0",
+    "envify": "^4.0.0",
     "standard": "^10.0.2",
-    "browserify": "^14.3.0"
+    "watchify": "^3.9.0"
   }
 }
