@@ -16,4 +16,10 @@ b.transform(envify({
   MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN
 }))
 
-b.bundle().pipe(output)
+b.on('update', bundle)
+
+bundle()
+
+function bundle () {
+  b.bundle().pipe(output)
+}
