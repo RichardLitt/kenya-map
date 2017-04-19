@@ -4,7 +4,9 @@
   "description": "This is a map of Kenya, as a test example.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test.js"
+    "test": "standard && node ./test.js",
+    "lint": "standard",
+    "build": "browserify src/index.js -o dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,9 @@
   "homepage": "https://github.com/RichardLitt/kenya-map#readme",
   "dependencies": {
     "leaflet": "^1.0.3"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2",
+    "browserify": "^14.3.0"
   }
 }
