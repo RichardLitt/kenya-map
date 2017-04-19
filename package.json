@@ -25,6 +25,7 @@
   "homepage": "https://github.com/RichardLitt/kenya-map#readme",
   "dependencies": {
     "domready": "^1.0.8",
+    "jquery": "^3.2.1",
     "leaflet": "^1.0.3"
   },
   "devDependencies": {
