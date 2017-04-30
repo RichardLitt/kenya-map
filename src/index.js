@@ -1,6 +1,7 @@
 const L = require('leaflet')
 const domready = require('domready')
-var $ = require('jquery')
+const $ = require('jquery')
+const cluster = require('leaflet.markercluster')
 
 const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN
 
