@@ -2,6 +2,9 @@ const L = require('leaflet')
 const domready = require('domready')
 const $ = require('jquery')
 const cluster = require('leaflet.markercluster')
+const _ = require('lodash')
+const fs = require('fs')
+const path = require('path')
 
 const MAPBOX_ACCESS_TOKEN = process.env.MAPBOX_ACCESS_TOKEN
 
@@ -14,11 +17,36 @@ domready(function () {
     accessToken: MAPBOX_ACCESS_TOKEN
   }).addTo(mymap)
 
-  // Markers
+  // Markers and Counties
   const geojsonURL = 'https://opendata.arcgis.com/datasets/73579b946adb446186e29702276aa77a_0.geojson'
 
+  // From example tutorial, http://leafletjs.com/examples/choropleth/
+  function getColor(d) {
+      return d > 130 ? '#800026' :
+             d > 110  ? '#BD0026' :
+             d > 90  ? '#E31A1C' :
+             d > 70  ? '#FC4E2A' :
+             d > 50   ? '#FD8D3C' :
+             d > 30   ? '#FEB24C' :
+             d > 10   ? '#FED976' :
+                        '#FFEDA0'
+  }
+
+  function style(feature) {
+    return {
+        fillColor: getColor(feature.markerCounter),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    }
+  }
+
   $.getJSON(geojsonURL, function (features) {
-    var markers = L.markerClusterGroup()
+    const markers = L.markerClusterGroup()
+    var counties = fs.readFileSync(path.join(__dirname, '..', 'data', 'counties.geojson'))
+    var counties = JSON.parse(counties.toString())
     L.geoJson(features, {
       onEachFeature: function (feature, layer) {
         var content
@@ -34,15 +62,18 @@ domready(function () {
           <h3>Objectives:</h3>
           <p>${feature.properties.project_objectives}</p>`
         }
+        // Find the county in the county list
+        var county = _.find(counties.features, (county) => {
+          return feature.properties.county === county.properties.COUNTY_NAM
+        })
+        // Add a marker counter to it, or add to the counter. If no match, ignore.
+        if (county) {
+          county.markerCounter = (county.markerCounter) ? county.markerCounter + 1 : 1
+        }
         markers.addLayer(layer.bindPopup(content))
       }
     })
     markers.addTo(mymap)
+    L.geoJson(counties, {style: style}).addTo(mymap)
   })
-
-  // Counties
-  var fs = require('fs')
-  var path = require('path')
-  var counties = fs.readFileSync(path.join(__dirname, '..', 'data', 'counties.geojson'))
-  L.geoJson(JSON.parse(counties.toString())).addTo(mymap)
 })

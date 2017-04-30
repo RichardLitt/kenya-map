@@ -28,7 +28,8 @@
     "domready": "^1.0.8",
     "jquery": "^3.2.1",
     "leaflet": "^1.0.3",
-    "leaflet.markercluster": "^1.0.5"
+    "leaflet.markercluster": "^1.0.5",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "browserify": "^14.3.0",
