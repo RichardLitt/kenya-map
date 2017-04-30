@@ -1,0 +1,74 @@
+{
+  "type": "FeatureCollection",
+  "features": [{
+        "type": "Feature",
+        "properties": {
+          "objectid": 1,
+          "projectid": "2013/054253",
+          "epgeoname": "Unspecified",
+          "y": -4.59383601,
+          "x": 39.13668771,
+          "ward": "VANGA",
+          "constituency": "LUNGALUNGA",
+          "county": "KWALE",
+          "project_cost_yearly_breakdown__": null,
+          "total_project_cost__kes_": null,
+          "approval_date": null,
+          "start_date__planned_": null,
+          "start_date__actual_": null,
+          "end_date__planned_": null,
+          "end_date__actual_": null,
+          "duration": null,
+          "duration__months_": null,
+          "project_title": null,
+          "project_description": null,
+          "project_objectives": null,
+          "ng_programme": null,
+          "vision_2030_flagship_ministry": null,
+          "vision_2030_flagship_project_pr": null,
+          "implementing_agency": null,
+          "implementation_status": null,
+          "mtef_sector": null,
+          "work_plan_progress____": 0
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [39.13668770999999, -4.593836011999997]
+        }
+      }, {
+        "type": "Feature",
+        "properties": {
+          "objectid": 2,
+          "projectid": "2013/054557",
+          "epgeoname": "Unspecified",
+          "y": -4.437633,
+          "x": 39.513272,
+          "ward": null,
+          "constituency": "MSAMBWENI",
+          "county": "KWALE",
+          "project_cost_yearly_breakdown__": 933333332,
+          "total_project_cost__kes_": 1400000000,
+          "approval_date": null,
+          "start_date__planned_": null,
+          "start_date__actual_": null,
+          "end_date__planned_": null,
+          "end_date__actual_": null,
+          "duration": "59 months 7 days",
+          "duration__months_": "59 months",
+          "project_title": "Standards And Market Access Programme",
+          "project_description": "Improve surveillance and risk analysis capabilities, strengthen the border inspection posts and their coordination and integration",
+          "project_objectives": "Improvement in the adoption and implementation of standards in the food sector",
+          "ng_programme": "010700 - General Administration Planning and Support Services",
+          "vision_2030_flagship_ministry": "Ministry of Agriculture, Livestock and Fisheries",
+          "vision_2030_flagship_project_pr": "Setting up of Five Livestock Disease-free Zones in the ASAL Regions",
+          "implementing_agency": "116 - Ministry of Agriculture, Livestock and Fisheries; 1171 - Ministry of Industrialization and Enterprise Development; 116 - MOAL&F - Kenya  Plant Health Inspectorate Service (KEPHIS); 1161 - State Department for Agriculture; 1162 - State Department fo",
+          "implementation_status": "Planned",
+          "mtef_sector": "Agriculture, Rural and Urban Development (ARUD)",
+          "work_plan_progress____": 0
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [39.51327199999997, -4.437633000000005]
+        }
+      }]
+    }
