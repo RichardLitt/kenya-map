@@ -15,8 +15,9 @@ domready(function () {
 
   var geojsonURL = 'https://opendata.arcgis.com/datasets/73579b946adb446186e29702276aa77a_0.geojson'
 
-  $.getJSON(geojsonURL, function (neighbourhoods) {
-    L.geoJson(neighbourhoods, {
+  $.getJSON(geojsonURL, function (features) {
+    var markers = L.markerClusterGroup()
+    L.geoJson(features, {
       onEachFeature: function (feature, layer) {
         var content
         if (!feature.properties.project_title) {
@@ -31,8 +32,9 @@ domready(function () {
           <h3>Objectives:</h3>
           <p>${feature.properties.project_objectives}</p>`
         }
-        layer.bindPopup(content)
+        markers.addLayer(layer.bindPopup(content))
       }
-    }).addTo(mymap)
+    })
+    markers.addTo(mymap)
   })
 })
