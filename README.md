@@ -8,7 +8,7 @@
 
 TODO: Fill out this long description.
 
-Time spent: 2 hours, 5 minutes.
+Time spent: 2 hours, 30 minutes.
 
 ## Table of Contents
 
