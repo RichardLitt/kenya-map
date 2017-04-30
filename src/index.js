@@ -1,7 +1,7 @@
 const L = require('leaflet')
+require('leaflet.markercluster')
 const domready = require('domready')
 const $ = require('jquery')
-const cluster = require('leaflet.markercluster')
 const _ = require('lodash')
 const fs = require('fs')
 const path = require('path')
@@ -21,32 +21,32 @@ domready(function () {
   const geojsonURL = 'https://opendata.arcgis.com/datasets/73579b946adb446186e29702276aa77a_0.geojson'
 
   // From example tutorial, http://leafletjs.com/examples/choropleth/
-  function getColor(d) {
-      return d > 130 ? '#800026' :
-             d > 110  ? '#BD0026' :
-             d > 90  ? '#E31A1C' :
-             d > 70  ? '#FC4E2A' :
-             d > 50   ? '#FD8D3C' :
-             d > 30   ? '#FEB24C' :
-             d > 10   ? '#FED976' :
-                        '#FFEDA0'
+  function getColor (d) {
+    return d > 130 ? '#800026'
+       : d > 110 ? '#BD0026'
+       : d > 90 ? '#E31A1C'
+       : d > 70 ? '#FC4E2A'
+       : d > 50 ? '#FD8D3C'
+       : d > 30 ? '#FEB24C'
+       : d > 10 ? '#FED976'
+       : '#FFEDA0'
   }
 
-  function style(feature) {
+  function style (feature) {
     return {
-        fillColor: getColor(feature.markerCounter),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
+      fillColor: getColor(feature.markerCounter),
+      weight: 2,
+      opacity: 1,
+      color: 'white',
+      dashArray: '3',
+      fillOpacity: 0.7
     }
   }
 
   $.getJSON(geojsonURL, function (features) {
     const markers = L.markerClusterGroup()
     var counties = fs.readFileSync(path.join(__dirname, '..', 'data', 'counties.geojson'))
-    var counties = JSON.parse(counties.toString())
+    counties = JSON.parse(counties.toString())
     L.geoJson(features, {
       onEachFeature: function (feature, layer) {
         var content
