@@ -39,4 +39,10 @@ domready(function () {
     })
     markers.addTo(mymap)
   })
+
+  // Counties
+  var fs = require('fs')
+  var path = require('path')
+  var counties = fs.readFileSync(path.join(__dirname, '..', 'data', 'counties.geojson'))
+  L.geoJson(JSON.parse(counties.toString())).addTo(mymap)
 })
