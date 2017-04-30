@@ -31,7 +31,6 @@ domready(function () {
        : d > 10 ? '#FED976'
        : '#FFEDA0'
   }
-
   function style (feature) {
     return {
       fillColor: getColor(feature.markerCounter),
