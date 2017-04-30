@@ -23542,7 +23542,7 @@ const L = require('leaflet')
 const domready = require('domready')
 var $ = require('jquery')
 
-const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoicmljaGFyZGxpdHQiLCJhIjoiY2oxcGs2M2kyMDAwNzMzbzExZ3k1bXM4ZyJ9.lxlSF9kNkXbUYATNkzkaKg"
+const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoicmljaGFyZGxpdHQiLCJhIjoiY2oxcGsxZTNnMDAxMzJ3bm9oYmxoY3RrZiJ9.OKg-spIY-9p0LtLrJsGfyQ"
 
 domready(function () {
   const mymap = L.map('mapid').setView([0.0236, 37.9062], 13)
@@ -23558,7 +23558,20 @@ domready(function () {
   $.getJSON(geojsonURL, function (neighbourhoods) {
     L.geoJson(neighbourhoods, {
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.NBarri)
+        var content
+        if (!feature.properties.project_title) {
+          content = `Unknown.
+
+          Project ID: ${feature.properties.projectid}`
+        } else {
+          content = `
+          <h2>${feature.properties.project_title}</h2>
+          <p>${feature.properties.project_description}</p>
+          <hr />
+          <h3>Objectives:</h3>
+          <p>${feature.properties.project_objectives}</p>`
+        }
+        layer.bindPopup(content)
       }
     }).addTo(mymap)
   })

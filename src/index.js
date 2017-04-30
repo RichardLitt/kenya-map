@@ -18,7 +18,20 @@ domready(function () {
   $.getJSON(geojsonURL, function (neighbourhoods) {
     L.geoJson(neighbourhoods, {
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.NBarri)
+        var content
+        if (!feature.properties.project_title) {
+          content = `Unknown.
+
+          Project ID: ${feature.properties.projectid}`
+        } else {
+          content = `
+          <h2>${feature.properties.project_title}</h2>
+          <p>${feature.properties.project_description}</p>
+          <hr />
+          <h3>Objectives:</h3>
+          <p>${feature.properties.project_objectives}</p>`
+        }
+        layer.bindPopup(content)
       }
     }).addTo(mymap)
   })
